@@ -27,6 +27,9 @@ namespace Fantastical_Events_2021.Data
             builder.Entity<Activity>()
                 .HasOne(e => e.Event)
                 .WithMany(a => a.Activities)
+                //change the foreign key here to Event name instead of event id 
+                //you dont need event id
+                //idiot.
                 .HasForeignKey(e => e.EventId)
                 .HasConstraintName("FK_Activites_EventId");
 

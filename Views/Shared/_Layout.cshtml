@@ -25,10 +25,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @*will need to be changed if you add a controller called Events for the MVC structure*@
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Index">Events</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Index">Our Activities!</a>
                         </li>
+
+                        @*will need to be changed if you add a controller called Events for the MVC structure*@
+                        @if (User.IsInRole("Administrator") || User.IsInRole("Employee"))
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Activities</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -37,6 +51,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            
         </main>
     </div>
 

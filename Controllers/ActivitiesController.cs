@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Fantastical_Events_2021.Data;
 using Fantastical_Events_2021.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Fantastical_Events_2021.Controllers
 {
+    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Employee")]
     public class ActivitiesController : Controller
     {
         private readonly ApplicationDbContext _context;

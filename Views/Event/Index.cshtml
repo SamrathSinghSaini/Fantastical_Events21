@@ -1,2 +1,73 @@
-﻿<h1>This is the Event Store controller!</h1>
+﻿@model IEnumerable<Fantastical_Events_2021.Models.Activity>
 
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Have a look at our fun filled activites </h1>
+
+
+    @foreach (var listItem in Model)
+    {
+
+        <a asp-controller="Event" asp-action="Browse" asp-route-activity="@listItem.ActivityName">@listItem.ActivityName</a>
+    }
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Event)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ActivityId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ActivityId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ActivityId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
