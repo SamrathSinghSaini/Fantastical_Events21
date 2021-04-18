@@ -7,9 +7,9 @@ namespace Fantastical_Events_2021.Models
 {
     public class Event
     {
-        public int EventID { get; set; }
+        public int EventId { get; set; }
 
-        public int ActivityID { get; set; }
+        public int ActivityId { get; set; }
         public String EventName { get; set; }
 
         public String EventCategory { get; set; }

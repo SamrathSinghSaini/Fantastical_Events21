@@ -9,7 +9,7 @@ namespace Fantastical_Events_2021.Models
     {
         public int CartId { get; set; } //PK
 
-        public int ActivityID { get; set; }
+        public int ActivityId { get; set; }
 
         public DateTime DateCreated { get; set; }
 

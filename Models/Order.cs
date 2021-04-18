@@ -9,7 +9,7 @@ namespace Fantastical_Events_2021.Models
     {
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
-        public String CustomerID { get; set; }
+        public String CustomerId { get; set; }
 
         public String FirstName { get; set; }
 
@@ -22,10 +22,6 @@ namespace Fantastical_Events_2021.Models
         public int Phone { get; set; }
 
         public Double OrderTotal { get; set; }
-
-
-
-
 
         public List<OrderDetail> OrderDetails { get; set; }
     }

@@ -18,6 +18,6 @@ namespace Fantastical_Events_2021.Models
 
         public Activity Activity { get; set; }
 
-        public int ActivityID { get; set; }
+        public int ActivityId { get; set; }
     }
 }
