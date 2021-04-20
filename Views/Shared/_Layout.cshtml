@@ -25,13 +25,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
+                        
+                         
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Index">Our Activities!</a>
                         </li>
+                        
 
                         @*will need to be changed if you add a controller called Events for the MVC structure*@
-                        @if (User.IsInRole("Administrator") || User.IsInRole("Employee"))
+                        @if (User.IsInRole("Administrator"))
                         {
 
                             <li class="nav-item">

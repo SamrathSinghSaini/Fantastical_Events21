@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Fantastical_Events_2021.Models;
+using Microsoft.AspNetCore.Http; 
 
 namespace Fantastical_Events_2021.Controllers
 {
@@ -18,10 +20,25 @@ namespace Fantastical_Events_2021.Controllers
         }
         public IActionResult Index()
         {
-            var activities = _context.Activities.OrderBy(a => a.ActivityName).ToList();
-            return View();
+
+            var events = _context.Events.OrderBy(e => e.EventName).ToList();
+            return View(events.ToList());
+        }
+
+        public IActionResult Browse(int eventId)
+        {
+
+            var activities = _context.Activities.Where(a => a.EventId == eventId).OrderBy(a => a.ActivityName).ToList();
+             
+            ViewBag.events = _context.Events.Find(eventId).EventName.ToString();
+            return View(activities);
+
+            
         }
 
        
+
+
+
     }
 }

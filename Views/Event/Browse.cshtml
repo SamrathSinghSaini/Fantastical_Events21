@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Fantastical_Events_2021.Models.Activity>
+
+@*@if(ViewBag.Event != null)
+{
+<h2>@ViewBag.Event</h2>
+    
+}*@
+
+
+
+<div>
+    @foreach (var a in Model)
+    {
+
+        <a asp-controller="Activities" asp-action="Details" asp-route-activity="@a.ActivityId">@a.ActivityName</a>
+        <br />
+    }
+</div>

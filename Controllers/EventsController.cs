@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Fantastical_Events_2021.Controllers
 {
     [Authorize(Roles = "Administrator")]
-    [Authorize(Roles = "Employee")]
+    //[Authorize(Roles = "Employee")]
     public class EventsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +23,7 @@ namespace Fantastical_Events_2021.Controllers
         }
 
         // GET: Events
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Events.ToListAsync());

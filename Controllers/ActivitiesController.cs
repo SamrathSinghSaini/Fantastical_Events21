@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Fantastical_Events_2021.Controllers
 {
     [Authorize(Roles = "Administrator")]
-    [Authorize(Roles = "Employee")]
+   
     public class ActivitiesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +23,7 @@ namespace Fantastical_Events_2021.Controllers
         }
 
         // GET: Activities
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Activities.Include(a => a.Event);
@@ -30,6 +31,7 @@ namespace Fantastical_Events_2021.Controllers
         }
 
         // GET: Activities/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
