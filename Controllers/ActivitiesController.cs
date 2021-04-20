@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Fantastical_Events_2021.Data;
 using Fantastical_Events_2021.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Fantastical_Events_2021.Controllers
 {
@@ -62,10 +64,27 @@ namespace Fantastical_Events_2021.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ActivityId,ActivityName,Description,Price,Photo,EventId,EventName")] Activity activity)
+        public async Task<IActionResult> Create([Bind("ActivityId,ActivityName,Description,Price,EventId,EventName")] Activity activity, IFormFile Photo)
         {
             if (ModelState.IsValid)
             {
+
+                if(Photo.Length > 0)
+                {
+                    var tempFile = Path.GetTempFileName();
+
+                    var fileName = Guid.NewGuid() + "-" + Photo.FileName;
+
+                    var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\img\\upload" + fileName;
+
+
+                    using var Stream = new FileStream(uploadPath, FileMode.Create);
+
+                    await Photo.CopyToAsync(Stream);
+
+                    activity.Photo = fileName; 
+
+                }
                 _context.Add(activity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
